@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monalisa Tech Solutions | Overseas Recruitment, Kampala</title>
+<style>
+:root{
+  --blue-deep:#1a3f58;
+  --blue-primary:#2c5f80;
+  --blue-soft:#eaf2f8;
+  --blue-soft-2:#d4e6f1;
+  --gray-bg:#f4f5f7;
+  --white:#ffffff;
+  --text-dark:#1e3140;
+  --text-muted:#5b6b79;
+  --border:#d6dfe6;
+  --success:#2a7048;
+  --success-bg:#e6f3ec;
+  --warning:#96640f;
+  --warning-bg:#fdf3e0;
+  --danger:#9b3535;
+  --danger-bg:#faeaea;
+  --gold:#8c6b2e;
+  --gold-mid:#b8892e;
+  --gold-light:#d4a843;
+  --gold-pale:#f9f3e6;
+  --header-h:68px;
+  --shadow-xs:0 1px 2px rgba(26,63,88,0.06);
+  --shadow-sm:0 2px 8px rgba(26,63,88,0.09);
+  --shadow-md:0 8px 28px rgba(26,63,88,0.13);
+  --shadow-lg:0 18px 44px rgba(26,63,88,0.17);
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:calc(var(--header-h) + 16px);}
+body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text-dark);background:var(--gray-bg);line-height:1.62;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;color:var(--blue-deep);line-height:1.2;margin-top:0;}
+a{color:var(--blue-primary);}
+img{max-width:100%;display:block;}
+p{margin:0 0 10px;}
+::selection{background:var(--gold-pale);color:var(--blue-deep);}
+
+/* ───── header ───── */
+.flag-stripe{height:3px;background:linear-gradient(to right,#000 0 33%,#FCDC04 33% 66%,#D90000 66% 100%);}
+header.site-header{background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;height:var(--header-h);}
+.nav-wrap{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:100%;position:relative;}
+.logo-lockup{display:flex;align-items:center;gap:13px;text-decoration:none;}
+.logo-mark{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:Palatino,Georgia,serif;font-size:1.2rem;font-weight:700;color:var(--gold-mid);flex:0 0 42px;background:linear-gradient(145deg,#fff 40%,var(--gold-pale));box-shadow:0 0 0 3px rgba(212,168,67,0.12);}
+.logo-text{font-family:Palatino,Georgia,serif;font-weight:700;font-size:1.08rem;color:var(--blue-deep);line-height:1.22;letter-spacing:0.15px;}
+.logo-text small{display:block;font-family:-apple-system,sans-serif;font-weight:500;font-size:0.64rem;color:var(--text-muted);letter-spacing:0.65px;text-transform:uppercase;margin-top:1px;}
+nav.main-nav{display:flex;gap:28px;align-items:center;}
+nav.main-nav a{color:var(--text-dark);font-size:0.74rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;padding:6px 2px;border-bottom:2px solid transparent;cursor:pointer;text-decoration:none;transition:color 0.18s,border-color 0.18s;white-space:nowrap;}
+nav.main-nav a:hover{color:var(--blue-primary);}
+nav.main-nav a.active{color:var(--blue-primary);border-bottom-color:var(--gold-light);}
+.menu-toggle{display:none;background:none;border:1px solid var(--border);border-radius:6px;font-size:1.3rem;cursor:pointer;color:var(--blue-deep);padding:6px 10px;line-height:1;}
+
+/* floating whatsapp button */
+.wa-float{position:fixed;bottom:24px;right:22px;z-index:200;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,0.45);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 10px 28px rgba(37,211,102,0.5);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+
+@media(max-width:760px){
+  nav.main-nav{position:absolute;top:calc(100% + 1px);left:0;right:0;background:#fff;flex-direction:column;padding:0 24px 18px;border-bottom:1px solid var(--border);display:none;gap:0;box-shadow:0 12px 28px rgba(26,63,88,0.13);align-items:flex-start;}
+  nav.main-nav.open{display:flex;}
+  nav.main-nav a{padding:15px 0;border-bottom:1px solid var(--gray-bg);text-transform:none;font-size:1.05rem;letter-spacing:0;width:100%;}
+  nav.main-nav a:last-child{border-bottom:none;}
+  .menu-toggle{display:block;}
+}
+
+/* ───── layout ───── */
+main{max-width:1160px;margin:0 auto;padding:36px 24px 80px;}
+.page{display:none;}
+.page.active{display:block;animation:fadeUp 0.28s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ───── buttons ───── */
+button,.btn-link{font-family:inherit;font-size:0.91rem;font-weight:700;letter-spacing:0.015em;padding:13px 24px;border-radius:7px;border:1.5px solid var(--blue-primary);background:var(--blue-primary);color:#fff;cursor:pointer;min-height:46px;transition:transform 0.16s ease,box-shadow 0.16s ease,background 0.16s ease,border-color 0.16s ease;box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;gap:7px;}
+button.secondary{background:#fff;color:var(--blue-primary);}
+button.tertiary{background:transparent;color:var(--blue-deep);border-color:var(--border);box-shadow:none;}
+button:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+button.secondary:hover{background:var(--blue-soft);}
+button.tertiary:hover{border-color:var(--gold-light);color:var(--gold-mid);box-shadow:none;transform:none;}
+button:active{transform:translateY(0) scale(0.98);box-shadow:var(--shadow-xs);}
+button:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid rgba(44,95,128,0.35);outline-offset:2px;}
+
+/* ───── eyebrow / section label ───── */
+.eyebrow,.section-label{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.eyebrow::before,.section-label::before{content:"";width:26px;height:2px;background:var(--gold-light);display:block;flex:0 0 26px;}
+.eyebrow span,.section-label span{font-size:0.7rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-mid);}
+
+/* ───── hero ───── */
+.hero{display:flex;gap:48px;align-items:center;flex-wrap:wrap;padding:36px 0 44px;}
+.hero-text{flex:1 1 380px;}
+.hero-image{flex:1 1 340px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(212,168,67,0.35);position:relative;min-height:360px;background:linear-gradient(145deg,var(--blue-soft),var(--blue-soft-2));}
+.hero-image img{width:100%;height:100%;min-height:360px;object-fit:cover;object-position:center top;display:block;}
+.hero-text h1{font-size:2.55rem;margin-bottom:18px;line-height:1.17;}
+.hero-text .lead{color:var(--text-muted);margin-bottom:28px;max-width:490px;font-size:1.04rem;line-height:1.68;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.office-note{margin-top:28px;padding:14px 16px;background:var(--gold-pale);border:1px solid rgba(212,168,67,0.3);border-radius:8px;font-size:0.88rem;color:var(--gold);max-width:490px;line-height:1.55;}
+.office-note strong{color:var(--gold-mid);}
+
+/* ───── trust ───── */
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:36px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:40px;}
+.trust-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px 20px;transition:transform 0.22s,box-shadow 0.22s;position:relative;overflow:hidden;}
+.trust-item::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--blue-primary),var(--gold-light));opacity:0;transition:opacity 0.22s;}
+.trust-item:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.trust-item:hover::after{opacity:1;}
+.trust-icon{width:36px;height:36px;margin-bottom:14px;color:var(--gold-mid);}
+.trust-item h3{font-size:1.0rem;margin-bottom:8px;}
+.trust-item p{color:var(--text-muted);font-size:0.9rem;margin:0;line-height:1.6;}
+
+/* ───── process strip ───── */
+.process-wrap{position:relative;margin-bottom:44px;}
+.process-strip{display:flex;gap:0;overflow-x:auto;padding:2px 2px 10px;scrollbar-width:none;-ms-overflow-style:none;-webkit-mask-image:linear-gradient(to right,#000 80%,transparent 100%);}
+.process-strip::-webkit-scrollbar{display:none;}
+.pill{flex:0 0 auto;display:flex;align-items:center;}
+.pill-inner{background:#fff;color:var(--blue-deep);padding:10px 16px;border:1px solid var(--border);font-size:0.79rem;font-weight:600;white-space:nowrap;border-right:none;line-height:1;}
+.pill:first-child .pill-inner{border-radius:7px 0 0 7px;}
+.pill:last-child .pill-inner{border-right:1px solid var(--border);border-radius:0 7px 7px 0;}
+.pill .arr{color:var(--gold-light);padding:0 3px;font-size:0.72rem;flex:0 0 auto;}
+.scroll-hint{font-size:0.74rem;color:var(--text-muted);margin-top:8px;display:none;}
+@media(max-width:680px){.scroll-hint{display:block;}.process-strip{-webkit-mask-image:linear-gradient(to right,#000 70%,transparent 96%);}}
+
+/* ───── jobs ───── */
+.page-header{margin-bottom:30px;}
+.page-header h1{margin-bottom:6px;}
+.page-header p{color:var(--text-muted);max-width:620px;font-size:1.01rem;}
+.job-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(276px,1fr));gap:24px;}
+.job-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-xs);transition:transform 0.22s,box-shadow 0.22s;}
+.job-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+.job-card-img{height:188px;overflow:hidden;background:linear-gradient(145deg,var(--blue-soft),var(--blue-soft-2));position:relative;}
+.job-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.38s ease;}
+.job-card-img .img-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.4rem;opacity:0.4;}
+.job-card:hover .job-card-img img{transform:scale(1.06);}
+.job-card-body{padding:18px 17px;display:flex;flex-direction:column;flex:1;}
+.job-flags{font-size:0.83rem;color:var(--text-muted);margin-bottom:5px;}
+.job-card h3{font-size:1.08rem;margin-bottom:4px;}
+.job-salary{font-weight:700;color:var(--gold-mid);margin:0 0 2px;font-size:0.99rem;}
+.job-duration{color:var(--text-muted);font-size:0.81rem;margin:0 0 10px;}
+.job-req{font-size:0.84rem;color:var(--text-muted);flex:1;line-height:1.55;margin-bottom:14px;}
+.job-card button{width:100%;margin-top:auto;}
+
+/* ───── forms ───── */
+.form-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:30px;max-width:680px;box-shadow:var(--shadow-sm);}
+.form-sec{font-size:0.72rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-mid);margin:26px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--gold-pale);}
+.form-sec:first-child{margin-top:0;}
+.field{margin-bottom:18px;display:flex;flex-direction:column;gap:6px;}
+label{font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-dark);}
+input,select,textarea{padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:0.96rem;font-family:inherit;background:#fff;color:var(--text-dark);transition:border-color 0.18s,box-shadow 0.18s;}
+input:focus,select:focus,textarea:focus{border-color:var(--blue-primary);box-shadow:0 0 0 3px rgba(44,95,128,0.13);outline:none;}
+input.error,textarea.error{border-color:var(--danger);background:var(--danger-bg);}
+.hint{font-size:0.78rem;color:var(--danger);margin-top:2px;display:none;font-weight:500;}
+.hint.show{display:block;}
+.opt-label{font-weight:400;text-transform:none;font-size:0.75rem;color:var(--text-muted);}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:580px){.row2{grid-template-columns:1fr;}}
+
+/* confirmation */
+.confirm-box{display:flex;align-items:flex-start;gap:14px;background:var(--success-bg);border:1px solid #b0dcbf;color:var(--success);padding:18px 20px;border-radius:9px;margin:24px 0;font-weight:600;line-height:1.5;}
+.confirm-icon{width:24px;height:24px;background:var(--success);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex:0 0 24px;line-height:1;}
+
+/* steps */
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 26px;}
+.step{flex:1 1 100px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:13px 10px;text-align:center;font-size:0.77rem;color:var(--text-muted);transition:border-color 0.2s,background 0.2s;}
+.step-num{display:block;width:26px;height:26px;border-radius:50%;background:var(--border);color:#fff;line-height:26px;margin:0 auto 8px;font-size:0.72rem;font-weight:800;}
+.step.done{border-color:var(--success);color:var(--success);background:var(--success-bg);}
+.step.done .step-num{background:var(--success);}
+.step.current{border-color:var(--blue-primary);color:var(--blue-deep);font-weight:700;background:var(--blue-soft);}
+.step.current .step-num{background:var(--blue-primary);}
+
+/* docs */
+.doc-list{display:flex;flex-direction:column;gap:9px;margin:14px 0 6px;}
+.doc-row{display:flex;align-items:center;justify-content:space-between;background:var(--gray-bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;gap:12px;flex-wrap:wrap;transition:background 0.18s;}
+.doc-row:hover{background:#fff;box-shadow:var(--shadow-xs);}
+.doc-name{font-weight:700;font-size:0.9rem;}
+.doc-row select{padding:6px 10px;font-size:0.8rem;border-radius:6px;border:1px solid var(--border);font-family:inherit;}
+.badge{padding:4px 11px;border-radius:20px;font-size:0.72rem;font-weight:800;white-space:nowrap;letter-spacing:0.02em;}
+.b-missing{background:var(--danger-bg);color:var(--danger);}
+.b-uploaded{background:var(--blue-soft);color:var(--blue-deep);}
+.b-checked{background:var(--warning-bg);color:var(--warning);}
+.b-approved{background:var(--success-bg);color:var(--success);}
+.b-rejected{background:var(--danger-bg);color:var(--danger);}
+
+/* ───── dashboard ───── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:18px;margin:18px 0 36px;}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 20px;box-shadow:var(--shadow-xs);position:relative;overflow:hidden;}
+.stat-card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--blue-primary),var(--gold-light));}
+.stat-num{font-family:Palatino,Georgia,serif;font-size:2.2rem;color:var(--blue-deep);display:block;line-height:1;margin-bottom:6px;}
+.stat-label{color:var(--text-muted);font-size:0.74rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:#fff;box-shadow:var(--shadow-xs);}
+table{width:100%;border-collapse:collapse;min-width:760px;}
+table th{background:linear-gradient(to bottom,var(--blue-soft),#e7eef4);color:var(--blue-deep);padding:13px 15px;text-align:left;font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid var(--border);}
+table td{padding:13px 15px;border-bottom:1px solid var(--border);font-size:0.88rem;vertical-align:middle;}
+table tr:last-child td{border-bottom:none;}
+table tbody tr{transition:background 0.15s;}
+table tbody tr:hover{background:var(--gray-bg);}
+.row-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.row-actions button,.row-actions a.btn-link{padding:7px 12px;font-size:0.73rem;min-height:auto;border-radius:6px;}
+.btn-approve{background:var(--success);border-color:var(--success);}
+.btn-reject{background:var(--danger);border-color:var(--danger);}
+.btn-call{background:#fff;color:var(--blue-primary);border-color:var(--blue-primary);}
+.btn-call:hover{background:var(--blue-soft);}
+.s-pending{background:var(--warning-bg);color:var(--warning);}
+.s-interview{background:var(--blue-soft);color:var(--blue-deep);}
+.s-approved{background:var(--success-bg);color:var(--success);}
+.s-rejected{background:var(--danger-bg);color:var(--danger);}
+
+.deploy-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;margin-top:14px;display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;box-shadow:var(--shadow-xs);}
+.deploy-img{width:192px;height:136px;object-fit:cover;border-radius:8px;flex:0 0 192px;background:linear-gradient(145deg,var(--blue-soft),var(--blue-soft-2));border:1px solid var(--border);min-width:0;}
+.deploy-body{flex:1 1 260px;}
+
+/* ───── contact ───── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+.contact-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:26px;box-shadow:var(--shadow-sm);}
+.contact-line{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--gray-bg);}
+.contact-line:last-of-type{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.c-icon{width:40px;height:40px;border-radius:8px;background:var(--blue-soft);border:1px solid var(--blue-soft-2);display:flex;align-items:center;justify-content:center;flex:0 0 40px;font-size:1.1rem;}
+.c-label{font-weight:800;display:block;font-size:0.7rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;}
+.wa-link{color:#128C4B;font-weight:800;font-size:1.12rem;text-decoration:none;}
+.wa-link:hover{text-decoration:underline;}
+.wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:0.93rem;padding:13px 22px;border-radius:8px;text-decoration:none;margin-top:22px;transition:transform 0.18s,box-shadow 0.18s;box-shadow:0 4px 16px rgba(37,211,102,0.32);}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4);}
+.stamp{display:inline-flex;align-items:center;gap:8px;border:1.5px dashed var(--gold-light);color:var(--gold-mid);padding:6px 14px;border-radius:6px;font-weight:700;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;background:var(--gold-pale);}
+
+/* ───── footer ───── */
+footer{background:linear-gradient(155deg,#11283a 0%,#1a3f58 100%);color:#cfe0ea;padding:50px 24px 22px;margin-top:60px;}
+.footer-wrap{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px;font-size:0.84rem;}
+.footer-brand{flex:1 1 230px;}
+footer h4{color:#fff;font-family:Palatino,Georgia,serif;margin-bottom:14px;font-size:1.0rem;}
+footer a{color:#b8d0de;text-decoration:none;transition:color 0.15s;}
+footer a:hover{color:#fff;}
+.footer-col p,.footer-col a{display:block;margin-bottom:8px;color:#b8d0de;line-height:1.55;}
+.gold-bar{display:block;width:40px;height:2px;background:var(--gold-light);margin-bottom:18px;opacity:0.65;}
+.wa-foot{color:#4ade80!important;font-weight:700;}
+.footer-sep{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:32px auto;max-width:1160px;}
+.footer-base{text-align:center;font-size:0.72rem;color:#5e88a0;max-width:1160px;margin:0 auto;}
+
+@media(max-width:780px){
+  .trust{grid-template-columns:1fr;}
+  .hero{flex-direction:column;gap:26px;}
+  .hero-text h1{font-size:1.95rem;}
+  .hero-image{min-height:240px;}
+  .hero-image img{min-height:240px;}
+  .footer-wrap{gap:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" href="https://wa.me/256703953711?text=Hello%2C%20I%20want%20to%20ask%20about%20a%20job%20abroad" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<header class="site-header">
+  <div class="flag-stripe"></div>
+  <div class="nav-wrap">
+    <a class="logo-lockup" onclick="goTo('home');return false;" href="#">
+      <div class="logo-mark" aria-hidden="true">M</div>
+      <div class="logo-text">MONALISA TECH SOLUTIONS<small>Overseas Recruitment · Kampala</small></div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
+    <nav class="main-nav" id="mainNav">
+      <a data-page="home" class="active">Home</a>
+      <a data-page="jobs">Jobs</a>
+      <a data-page="apply">Apply</a>
+      <a data-page="dashboard">Dashboard</a>
+      <a data-page="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ══════════════ HOME ══════════════ -->
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="eyebrow"><span>Verified Recruitment Agency</span></div>
+      <h1>Helping Ugandans Access Jobs in GCC Countries</h1>
+      <p class="lead">We help people from Uganda find work in the Gulf region. Our office is in Kampala. Our staff handle every step from the day you register to the day you land at your destination.</p>
+      <div class="hero-actions">
+        <button onclick="goTo('jobs')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          See Available Jobs
+        </button>
+        <button class="secondary" onclick="goTo('apply')">Register Now</button>
+        <button class="tertiary" onclick="goTo('contact')">Contact Us</button>
+      </div>
+      <div class="office-note">
+        <strong>Our office is open.</strong> If you have questions before applying, you can reach us on WhatsApp at <a href="https://wa.me/256703953711" target="_blank" rel="noopener" style="color:var(--gold-mid);font-weight:700;">+256 703 953 711</a>. We will answer honestly.
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1100&h=760&fit=crop" alt="African professionals in a Kampala office reviewing documents together" loading="eager" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3>Verified Recruitment Agency</h3>
+      <p>Monalisa Tech Solutions is a real recruitment office in Kampala. Every application is reviewed by a person, not a machine. You will always know who is handling your file.</p>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+      <h3>Uganda Based Operations</h3>
+      <p>Our office is in Kampala. You can walk in, call, or message us on WhatsApp. There is always someone available to answer your questions in plain language.</p>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <h3>GCC Employer Network</h3>
+      <p>We place Ugandans in UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. All positions come directly through our office. We check every employer before we send anyone.</p>
+    </div>
+  </div>
+
+  <div class="section-label"><span>How it works</span></div>
+  <h2 style="margin-bottom:8px;">The steps from registration to deployment</h2>
+  <p style="color:var(--text-muted);max-width:600px;margin-bottom:20px;font-size:0.98rem;">Every person who applies goes through the same seven steps below. Nothing is skipped. If you want to know which step you are at, you can call or WhatsApp our office at any time.</p>
+  <div class="process-wrap">
+    <div class="process-strip">
+      <div class="pill"><div class="pill-inner">1 · Application Received</div><span class="arr">›</span></div>
+      <div class="pill"><div class="pill-inner">2 · Document Check</div><span class="arr">›</span></div>
+      <div class="pill"><div class="pill-inner">3 · Interview</div><span class="arr">›</span></div>
+      <div class="pill"><div class="pill-inner">4 · Shortlisted</div><span class="arr">›</span></div>
+      <div class="pill"><div class="pill-inner">5 · Visa Processing</div><span class="arr">›</span></div>
+      <div class="pill"><div class="pill-inner">6 · Training</div><span class="arr">›</span></div>
+      <div class="pill"><div class="pill-inner">7 · Deployment</div></div>
+    </div>
+    <p class="scroll-hint">← Swipe to see all steps</p>
+  </div>
+</section>
+
+<!-- ══════════════ JOBS ══════════════ -->
+<section id="jobs" class="page">
+  <div class="page-header">
+    <div class="section-label"><span>Open Positions</span></div>
+    <h1>Jobs Available Now</h1>
+    <p>These are the positions we are currently recruiting for. Each one is with a verified employer in the Gulf. Read the requirements carefully before you apply. If you are unsure, call our office first.</p>
+  </div>
+  <div class="job-grid" id="jobGrid"></div>
+</section>
+
+<!-- ══════════════ APPLY ══════════════ -->
+<section id="apply" class="page">
+  <div class="page-header">
+    <div class="section-label"><span>Get Started</span></div>
+    <h1>Register as a Job Seeker</h1>
+    <p>Please fill in your details accurately. Our staff will use this to contact you, so your phone number must be correct. If you make a mistake, you can call us to update it.</p>
+  </div>
+
+  <div class="form-card">
+    <form id="applyForm" novalidate>
+      <p class="form-sec">Personal Details</p>
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="e.g. Grace Namutebi" autocomplete="name">
+        <span class="hint" id="nameHint">Please enter your full name.</span>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+256 703 953 711" autocomplete="tel">
+          <span class="hint" id="phoneHint">Enter your Uganda number, e.g. +256 703 953 711</span>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="opt-label">(optional)</span></label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="district">District or City</label>
+          <input type="text" id="district" placeholder="e.g. Kampala, Gulu, Mbarara">
+        </div>
+        <div class="field">
+          <label for="passportStatus">Passport Status</label>
+          <select id="passportStatus">
+            <option>I have a valid passport</option>
+            <option>I have applied for a passport</option>
+            <option>I do not have a passport yet</option>
+          </select>
+        </div>
+      </div>
+      <p class="form-sec">Job Preference</p>
+      <div class="row2">
+        <div class="field">
+          <label for="experience">Experience Level</label>
+          <select id="experience">
+            <option>No experience</option>
+            <option>Less than 1 year</option>
+            <option>1 to 3 years</option>
+            <option>Over 3 years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="jobPref">Type of Work</label>
+          <select id="jobPref">
+            <option>Construction Worker</option>
+            <option>Driver</option>
+            <option>Hotel Staff</option>
+            <option>Security Guard</option>
+            <option>Cleaner / Housekeeping</option>
+            <option>Warehouse Worker</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" style="width:100%;margin-top:6px;font-size:1rem;">Submit My Application</button>
+    </form>
+
+    <div id="applyDone" hidden>
+      <div class="confirm-box">
+        <div class="confirm-icon">✓</div>
+        <span>Thank you, <strong id="confirmedName"></strong>. We have received your details and will contact you on <strong id="confirmedPhone"></strong> soon. Please keep your phone on.</span>
+      </div>
+
+      <h3 style="margin-bottom:4px;">Your Application Stage</h3>
+      <p style="color:var(--text-muted);font-size:0.87rem;margin-bottom:0;">Your file is at step 1. Our officer will move it forward after checking your documents.</p>
+      <div class="steps" id="appSteps"></div>
+
+      <h3 style="margin-bottom:4px;">Your Documents</h3>
+      <p style="color:var(--text-muted);font-size:0.87rem;">You can bring original copies to our Kampala office. Update the status below once you have them ready.</p>
+      <div class="doc-list" id="docList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DASHBOARD ══════════════ -->
+<section id="dashboard" class="page">
+  <div class="page-header">
+    <div class="section-label"><span>Office View</span></div>
+    <h1>Recruiter Dashboard</h1>
+    <p>This is the internal screen our recruitment officers use to review and move applications forward. All actions are done manually.</p>
+  </div>
+
+  <div class="stats-grid" id="statsGrid"></div>
+
+  <div class="section-label" style="margin-bottom:12px;"><span>All Applicants</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Name</th><th>Phone</th><th>Job Applied</th><th>District</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="tBody"></tbody>
+    </table>
+  </div>
+
+  <div class="section-label" style="margin-top:46px;margin-bottom:10px;"><span>Deployment Tracking</span></div>
+  <h2 style="margin-bottom:6px;">Following Grace Namutebi to Dubai</h2>
+  <p style="color:var(--text-muted);max-width:640px;font-size:0.96rem;margin-bottom:14px;">We track every step from employer selection until the person is settled at their workplace. Grace was selected for Hotel Staff in Dubai, UAE. She is currently in the visa processing stage.</p>
+  <div class="deploy-card">
+    <img class="deploy-img" src="https://images.pexels.com/photos/4173219/pexels-photo-4173219.jpeg?auto=compress&cs=tinysrgb&w=500&h=340&fit=crop" alt="A traveler at an airport carrying luggage" onerror="this.style.background='var(--blue-soft)'">
+    <div class="deploy-body">
+      <p style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-mid);margin-bottom:6px;">Current Candidate</p>
+      <h3 style="margin-bottom:14px;font-size:1.15rem;">Grace Namutebi &nbsp;·&nbsp; Hotel Staff &nbsp;·&nbsp; Dubai, UAE</h3>
+      <div class="steps" id="deploySteps"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="page">
+  <div class="page-header">
+    <div class="section-label"><span>Get in Touch</span></div>
+    <h1>Talk to our recruitment team</h1>
+    <p>We are available on WhatsApp, by email, and in person at our Kampala office. There is no automated system. You will speak with a real person who knows your file.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="stamp">&#127981; Kampala Office</div>
+      <div class="contact-line">
+        <div class="c-icon">&#128242;</div>
+        <div>
+          <span class="c-label">WhatsApp</span>
+          <a class="wa-link" href="https://wa.me/256703953711" target="_blank" rel="noopener">+256 703 953 711</a>
+          <p style="margin:4px 0 0;color:var(--text-muted);font-size:0.82rem;">Quickest way to reach us. We usually reply within an hour.</p>
+        </div>
+      </div>
+      <div class="contact-line">
+        <div class="c-icon">&#9993;</div>
+        <div>
+          <span class="c-label">Email</span>
+          <a href="mailto:kabuusumonalisa@gmail.com">kabuusumonalisa@gmail.com</a>
+          <p style="margin:4px 0 0;color:var(--text-muted);font-size:0.82rem;">For documents or longer questions, email works well.</p>
+        </div>
+      </div>
+      <div class="contact-line">
+        <div class="c-icon">&#128205;</div>
+        <div>
+          <span class="c-label">Office</span>
+          <span style="font-weight:600;">Kampala, Uganda</span>
+          <p style="margin:4px 0 0;color:var(--text-muted);font-size:0.82rem;">You are welcome to visit us in person. Call ahead so we can make time for you.</p>
+        </div>
+      </div>
+      <a class="wa-btn" href="https://wa.me/256703953711?text=Hello%2C%20I%20want%20to%20ask%20about%20a%20job%20abroad" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Message us on WhatsApp
+      </a>
+    </div>
+
+    <div>
+      <form class="form-card" id="contactForm" novalidate>
+        <p class="form-sec" style="margin-top:0;">Send us a message</p>
+        <div class="field">
+          <label for="cName">Your Name</label>
+          <input type="text" id="cName" placeholder="e.g. Moses Okello" required>
+        </div>
+        <div class="field">
+          <label for="cPhone">Phone Number</label>
+          <input type="tel" id="cPhone" placeholder="+256 7XX XXX XXX">
+        </div>
+        <div class="field">
+          <label for="cMsg">Your Message</label>
+          <textarea id="cMsg" rows="5" placeholder="Ask about a job, your application status, documents, or anything else." required></textarea>
+        </div>
+        <button type="submit" style="width:100%;">Send Message</button>
+      </form>
+      <div id="contactDone" class="confirm-box" style="margin-top:16px;" hidden>
+        <div class="confirm-icon">✓</div>
+        <span>Your message has been received. Someone from our team will get back to you. You can also reach us directly on WhatsApp at +256 703 953 711.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-brand">
+      <span class="gold-bar"></span>
+      <h4>Monalisa Tech Solutions</h4>
+      <p style="color:#b8d0de;line-height:1.65;margin-bottom:10px;">Overseas Recruitment Agency<br>Kampala, Uganda</p>
+      <p style="color:#5e88a0;font-size:0.78rem;max-width:220px;">We connect Ugandan workers with verified employers in the Gulf region. Every case is handled personally by our office team.</p>
+    </div>
+    <div class="footer-col">
+      <span class="gold-bar"></span>
+      <h4>Pages</h4>
+      <a data-page="home">Home</a>
+      <a data-page="jobs">Jobs</a>
+      <a data-page="apply">Apply</a>
+      <a data-page="dashboard">Dashboard</a>
+      <a data-page="contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <span class="gold-bar"></span>
+      <h4>Reach Us</h4>
+      <a class="wa-foot" href="https://wa.me/256703953711" target="_blank" rel="noopener">&#128242; +256 703 953 711</a>
+      <a href="mailto:kabuusumonalisa@gmail.com">kabuusumonalisa@gmail.com</a>
+      <p style="margin-top:10px;">Kampala, Uganda</p>
+    </div>
+  </div>
+  <hr class="footer-sep">
+  <p class="footer-base">&copy; 2026 Monalisa Tech Solutions &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Kampala, Uganda</p>
+</footer>
+
+<script>
+/* ── navigation ── */
+var headerH = document.querySelector('header.site-header').offsetHeight;
+
+function goTo(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav.main-nav a').forEach(function(a){
+    a.classList.toggle('active', a.dataset.page===id);
+  });
+  document.getElementById('mainNav').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelectorAll('a[data-page]').forEach(function(a){
+  a.addEventListener('click',function(e){e.preventDefault();goTo(a.dataset.page);});
+});
+document.getElementById('menuToggle').addEventListener('click',function(){
+  document.getElementById('mainNav').classList.toggle('open');
+});
+document.addEventListener('click',function(e){
+  if(!e.target.closest('header.site-header')){
+    document.getElementById('mainNav').classList.remove('open');
+  }
+});
+
+/* ── jobs ── */
+var jobs=[
+  {title:'Construction Worker',flags:'🇦🇪 🇸🇦',countries:'UAE · Saudi Arabia',salary:'USD 350–500 / month',duration:'2 year contract',req:'Able to do physical outdoor work. No serious health conditions. Safety training is provided on arrival.',img:'https://images.pexels.com/photos/10202856/pexels-photo-10202856.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop',alt:'Construction workers in hard hats at a building site',icon:'🏗️'},
+  {title:'Driver',flags:'🇦🇪 🇶🇦',countries:'UAE · Qatar',salary:'USD 450–650 / month',duration:'2 year contract',req:'Valid driving permit and at least 2 years of experience. A clean police record is required.',img:'https://images.pexels.com/photos/14797990/pexels-photo-14797990.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop',alt:'A professional driver sitting in his vehicle',icon:'🚗'},
+  {title:'Hotel Staff',flags:'🇦🇪 🇴🇲',countries:'Dubai · Oman',salary:'USD 400–550 / month',duration:'2 year contract',req:'Secondary education and basic English. Neat appearance and able to work shift hours.',img:'https://images.pexels.com/photos/6466220/pexels-photo-6466220.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop',alt:'A hotel housekeeping staff member holding clean towels',icon:'🏨'},
+  {title:'Security Guard',flags:'🇶🇦 🇰🇼',countries:'Qatar · Kuwait',salary:'USD 400–500 / month',duration:'2 year contract',req:'At least 5 feet 6 inches tall. No criminal record. Physically fit with basic English communication.',img:'https://images.pexels.com/photos/31594272/pexels-photo-31594272.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop',alt:'A uniformed security guard at an entrance',icon:'🛡️'},
+  {title:'Cleaner / Housekeeping',flags:'🇸🇦 🇧🇭',countries:'Saudi Arabia · Bahrain',salary:'USD 350–450 / month',duration:'2 year contract',req:'Hardworking and willing to learn. No previous experience needed. Training is given on arrival.',img:'https://images.pexels.com/photos/4440541/pexels-photo-4440541.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop',alt:'A cleaner mopping a commercial floor',icon:'🧹'},
+  {title:'Warehouse Worker',flags:'🇦🇪 🇴🇲',countries:'UAE · Oman',salary:'USD 400–550 / month',duration:'2 year contract',req:'Able to lift loads and stand for long periods. Basic numeracy and reading ability required.',img:'https://images.pexels.com/photos/8069548/pexels-photo-8069548.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop',alt:'A warehouse worker managing stock boxes',icon:'📦'}
+];
+
+function renderJobs(){
+  document.getElementById('jobGrid').innerHTML=jobs.map(function(j){
+    return '<div class="job-card">'
+      +'<div class="job-card-img"><img src="'+j.img+'" alt="'+j.alt+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="img-fallback">'+j.icon+'</div></div>'
+      +'<div class="job-card-body">'
+      +'<div class="job-flags">'+j.flags+'&nbsp; <span style="font-size:0.8rem;">'+j.countries+'</span></div>'
+      +'<h3>'+j.title+'</h3>'
+      +'<p class="job-salary">'+j.salary+'</p>'
+      +'<p class="job-duration">'+j.duration+'</p>'
+      +'<p class="job-req">'+j.req+'</p>'
+      +'<button onclick="applyForJob(\''+j.title+'\')">Apply for this job</button>'
+      +'</div></div>';
+  }).join('');
+}
+
+function applyForJob(title){
+  goTo('apply');
+  var sel=document.getElementById('jobPref');
+  for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===title){sel.selectedIndex=i;break;}}
+  setTimeout(function(){document.getElementById('fullName').focus();},320);
+}
+
+/* ── apply form ── */
+var docs=[
+  {name:'Passport',status:'Missing'},
+  {name:'CV / Resume',status:'Missing'},
+  {name:'Certificates',status:'Missing'},
+  {name:'Police Clearance',status:'Missing'}
+];
+
+function docBadgeClass(s){
+  return{Missing:'b-missing',Uploaded:'b-uploaded','Checked by officer':'b-checked',Approved:'b-approved',Rejected:'b-rejected'}[s]||'b-missing';
+}
+
+function renderDocs(){
+  var opts=['Missing','Uploaded','Checked by officer','Approved','Rejected'];
+  document.getElementById('docList').innerHTML=docs.map(function(d,i){
+    return '<div class="doc-row">'
+      +'<span class="doc-name">'+d.name+'</span>'
+      +'<span class="badge '+docBadgeClass(d.status)+'" id="db'+i+'">'+d.status+'</span>'
+      +'<select onchange="updateDoc('+i+',this.value)">'+opts.map(function(o){return'<option'+(o===d.status?' selected':'')+'>'+o+'</option>';}).join('')+'</select>'
+      +'</div>';
+  }).join('');
+}
+
+function updateDoc(i,v){
+  docs[i].status=v;
+  var b=document.getElementById('db'+i);
+  b.textContent=v;b.className='badge '+docBadgeClass(v);
+}
+
+function renderSteps(id,steps,cur){
+  document.getElementById(id).innerHTML=steps.map(function(s,i){
+    var c='step'+(i<cur?' done':i===cur?' current':'');
+    return '<div class="'+c+'"><span class="step-num">'+(i+1)+'</span>'+s+'</div>';
+  }).join('');
+}
+
+var appStages=['Application Received','Document Check','Interview Stage','Shortlisted','Visa Processing','Training','Deployment'];
+var depStages=['Selected by Employer','Visa Processing','Flight Booked','Departure from Uganda','Arrival in GCC','Assigned to Workplace'];
+
+document.getElementById('applyForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var n=document.getElementById('fullName');
+  var p=document.getElementById('phone');
+  var d=document.getElementById('district');
+  var ok=true;
+  [n,p,d].forEach(function(el){el.classList.remove('error');});
+  document.querySelectorAll('.hint').forEach(function(h){h.classList.remove('show');});
+  if(!n.value.trim()){n.classList.add('error');document.getElementById('nameHint').classList.add('show');ok=false;}
+  if(!p.value.trim()||!/^(\+?256|0)?7\d{8,9}$/.test(p.value.replace(/[\s\-]/g,''))){p.classList.add('error');document.getElementById('phoneHint').classList.add('show');ok=false;}
+  if(!d.value.trim()){d.classList.add('error');ok=false;}
+  if(!ok)return;
+  document.getElementById('confirmedName').textContent=n.value.trim();
+  document.getElementById('confirmedPhone').textContent=p.value.trim();
+  var done=document.getElementById('applyDone');
+  done.hidden=false;
+  renderSteps('appSteps',appStages,0);
+  renderDocs();
+  /* scroll with header offset */
+  var top=done.getBoundingClientRect().top+window.pageYOffset - (headerH+20);
+  window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+});
+
+/* ── contact form ── */
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('contactDone').hidden=false;
+});
+
+/* ── dashboard ── */
+var applicants=[
+  {name:'Grace Namutebi', phone:'+256 701 222 333',job:'Hotel Staff',        district:'Mukono', status:'Pending Review'},
+  {name:'Moses Okello',   phone:'+256 772 444 555',job:'Construction Worker',district:'Gulu',   status:'Interview Scheduled'},
+  {name:'Sarah Kintu',    phone:'+256 753 666 777',job:'Cleaner / Housekeeping',district:'Kampala',status:'Approved'},
+  {name:'David Mugisha',  phone:'+256 781 888 999',job:'Driver',             district:'Mbarara',status:'Not Selected'},
+  {name:'Patricia Auma',  phone:'+256 704 111 222',job:'Warehouse Worker',   district:'Jinja',  status:'Pending Review'},
+  {name:'Joseph Ssali',   phone:'+256 776 333 444',job:'Security Guard',     district:'Wakiso', status:'Interview Scheduled'},
+  {name:'Rebecca Atim',   phone:'+256 782 555 666',job:'Hotel Staff',        district:'Lira',   status:'Pending Review'}
+];
+
+function sClass(s){return{
+  'Pending Review':'s-pending',
+  'Interview Scheduled':'s-interview',
+  'Approved':'s-approved',
+  'Not Selected':'s-rejected'
+}[s]||'s-pending';}
+
+function renderApplicants(){
+  document.getElementById('tBody').innerHTML=applicants.map(function(a,i){
+    return '<tr>'
+      +'<td style="font-weight:600;">'+a.name+'</td>'
+      +'<td><a href="tel:'+a.phone.replace(/\s/g,'')+'" style="color:var(--blue-primary);font-weight:600;text-decoration:none;">'+a.phone+'</a></td>'
+      +'<td>'+a.job+'</td>'
+      +'<td>'+a.district+'</td>'
+      +'<td><span class="badge '+sClass(a.status)+'">'+a.status+'</span></td>'
+      +'<td><div class="row-actions">'
+      +'<a class="btn-link btn-call" href="tel:'+a.phone.replace(/\s/g,'')+'">📞 Call</a>'
+      +'<button class="btn-approve" onclick="setStatus('+i+',\'Approved\')">Approve</button>'
+      +'<button class="btn-reject" onclick="setStatus('+i+',\'Not Selected\')">Reject</button>'
+      +'</div></td>'
+      +'</tr>';
+  }).join('');
+  var pending=applicants.filter(function(a){return a.status==='Pending Review';}).length;
+  document.getElementById('statsGrid').innerHTML=[
+    {n:applicants.length+(482-7),l:'Total Applicants'},
+    {n:jobs.length,l:'Active Jobs'},
+    {n:pending,l:'Pending Reviews'},
+    {n:134,l:'Successful Placements'}
+  ].map(function(s){
+    return '<div class="stat-card"><span class="stat-num">'+s.n+'</span><span class="stat-label">'+s.l+'</span></div>';
+  }).join('');
+}
+
+function setStatus(i,s){applicants[i].status=s;renderApplicants();}
+
+/* ── init ── */
+renderJobs();
+renderApplicants();
+renderSteps('deploySteps',depStages,1);
+</script>
+</body>
+</html>
